@@ -1,2 +1,2 @@
-# real-estate-website
-A website for a Real State Agency.
+# admin-dashboard
+A web app for admin to manage Charts, Calendar, Tables and Trello Board.
