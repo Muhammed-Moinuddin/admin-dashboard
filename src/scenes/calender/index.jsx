@@ -23,7 +23,7 @@ const Calender = () => {
 
     const handleDateClick = (selected) => {
         const title = prompt("Please Enter a new title for your event");
-        const calenderApi = selected.view.calender;
+        const calenderApi = selected.view.calendar;
         calenderApi.unselect();
 
         if (title) {
@@ -73,7 +73,25 @@ const Calender = () => {
                 </Box>
                 {/* CALENDER */}
                 <Box flex="1 1 100%" ml="15px">
-                    <FullCalendar plugins={[dayGridPlugin]}/>
+                    <FullCalendar height="75vh" plugins={[dayGridPlugin,timeGridPlugin,interactionPlugin,listPlugin]}
+                    headerToolbar={{
+                        left: "prev,next today",
+                        center: "title",
+                        right:"dayGridMonth,timeGridWeek,timeGridDay,listMonth"
+                    }}
+                    initialView="dayGridMonth"
+                    editable={true}
+                    selectable={true}
+                    selectMirror={true}
+                    dayMaxEvents={true}
+                    select = {handleDateClick}
+                    eventClick={handleEventClick}
+                    eventsSet={(events) => setCurrentEvents(events)}
+                    initialEvents={[
+                        {id: "1234", title: "All-day event", date: "2023-03-30"},
+                        {id: "4321", title: "Timed event", date: "2023-04-10"}
+                    ]}
+                    />
                 </Box>
             </Box>
         </Box>
